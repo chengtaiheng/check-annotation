@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>check-annotation</artifactId>
+        <groupId>com.chth</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>check-annotation-appearance</artifactId>
+
+
+    <properties>
+        <encoding>UTF-8</encoding>
+        <java.version>1.8</java.version>
+        <springboot.version>2.0.6.RELEASE</springboot.version>
+        <spring.version>5.1.0.RELEASE</spring.version>
+        <springcloud.version>Finchley.RELEASE</springcloud.version>
+        <carnival.version>1.1.5-SNAPSHOT</carnival.version>
+        <jackson.version>2.9.7</jackson.version>
+        <gson.version>2.8.5</gson.version>
+        <slf4j.version>1.7.25</slf4j.version>
+        <carnival.version>1.1.5-SNAPSHOT</carnival.version>
+        <maven.test.skip>true</maven.test.skip>
+        <maven.deploy.skip>true</maven.deploy.skip>
+        <maven.install.skip>true</maven.install.skip>
+
+        <docker.image.prefix>ccae</docker.image.prefix>
+    </properties>
+
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>${springboot.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.chth</groupId>
+                <artifactId>check-annotation-common</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+        </dependencies>
+
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+
+        <resources>
+            <resource>
+                <directory>${project.basedir}/src/main/java</directory>
+
+                <filtering>false</filtering>
+                <excludes>
+                    <exclude>**/.gitkeep</exclude>
+                    <exclude>**/*.bak</exclude>
+                    <exclude>**/*.java</exclude>
+                    <exclude>**/*.groovy</exclude>
+                    <exclude>**/*.scala</exclude>
+                    <exclude>**/*.kotlin</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>${project.basedir}/src/main/resources</directory>
+                <filtering>false</filtering>
+                <excludes>
+                    <exclude>**/.gitkeep</exclude>
+                    <exclude>**/*.bak</exclude>
+                </excludes>
+            </resource>
+        </resources>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.0</version>
+                <configuration>
+                    <debug>false</debug>
+                    <encoding>${encoding}</encoding>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
